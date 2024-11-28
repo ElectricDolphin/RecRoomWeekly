@@ -106,6 +106,8 @@ var hardChallenges = [
     "Score 15 goals in Soccer."
 ];
 
+var vrOnly = [easyChallenges[20], easyChallenges[21], mediumChallenges[18], mediumChallenges[19], hardChallenges[7], hardChallenges[25]]
+
 var timeSinceFirst = Date.now() - 1732744800000;
 var week = Math.floor(timeSinceFirst/604800000);
 console.log(week);
@@ -214,11 +216,28 @@ function formatTime(millis) {
     return timeStr;
 }
 document.getElementById("challenge-timer").innerHTML = formatTime(timeUntilNext);
+var prevWeek = week;
 window.setInterval(function() {
     timeSinceFirst = Date.now() - 1732744800000;
+    prevWeek = week;
+    week = Math.floor(timeSinceFirst/604800000);
     timeSinceLast = timeSinceFirst%604800000;
     timeUntilNext = 604800000 - timeSinceLast;
     document.getElementById("challenge-timer").innerHTML = formatTime(timeUntilNext);
+
+    if (prevWeek !== week) {
+        console.log("new week");
+        random = new Marsaglia(week);
+        challengeList = {
+            classic: pickChallenges(classicChallenges, 5),
+            easy: pickChallenges(easyChallenges, 5),
+            medium: pickChallenges(mediumChallenges, 5),
+            hard: pickChallenges(hardChallenges, 5)
+        };
+        console.log(challengeList);
+        document.getElementById("challenge-container").innerHTML = "";
+        displayChallengeArray(challengeList[document.getElementsByClassName("selected")[0].classList[1]]);
+    }
 }, 1000);
 
 var difficultyButtons = document.getElementsByClassName("difficulty_button");

@@ -60,7 +60,8 @@ body {
     border-radius: 15px;
 }
 .difficulty_button:hover {
-    color: #dddddd
+    color: #dddddd;
+    cursor: pointer;
 }
 .difficulty_button.selected {
     background-color: var(--selected-button-col);
