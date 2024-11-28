@@ -1,0 +1,80 @@
+:root {
+    --challenge-bg-col: #dcb754;
+    --deselected-button-col: #4a77cf;
+    --selected-button-col: #e76231;
+    --deselected-button-hover-col: #335394;
+    --selected-button-hover-col: #9e4322;
+}
+@font-face {
+    font-family: "futura-bold";
+    src: url("FuturaCyrillicBold.ttf");
+}
+@font-face {
+    font-family: "futura-extra-bold";
+    src: url("FuturaCyrillicExtraBold.ttf");
+}
+body {
+    background-color: #a36b2f;
+    font-family: futura-bold;
+    color: white;
+}
+.challenge {
+    background-color: var(--challenge-bg-col);
+    height: 12vh;
+    line-height: 12vh;
+    font-size: 4vh;
+    box-sizing: border-box;
+    border-radius: 20px;
+    vertical-align: middle;
+    padding-left: 1em;
+    margin: 1%;
+}
+.challenge > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+#challenge-description {
+    /* background-color: var(--challenge-bg-col); */
+    height: 8vh;
+    line-height: 8vh;
+    font-size: 4vh;
+    box-sizing: border-box;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin: 1%;
+    text-align: center;
+    padding: 0;
+}
+.difficulty_button {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    color: white;
+    font-family: "futura-bold";
+    width: 24%;
+    height: 1.4em;
+    font-size: 1em;
+    border: none;
+    border-radius: 15px;
+}
+.difficulty_button:hover {
+    color: #dddddd
+}
+.difficulty_button.selected {
+    background-color: var(--selected-button-col);
+}
+.difficulty_button.selected:hover {
+    background-color: var(--selected-button-hover-col);
+}
+.difficulty_button.unselected {
+    background-color: var(--deselected-button-col);
+}
+.difficulty_button.unselected:hover {
+    background-color: var(--deselected-button-hover-col);
+}
+#timer-desc {
+    text-align: center;
+    font-size: 6vh;
+}
