@@ -28,11 +28,15 @@ body {
     vertical-align: middle;
     padding-left: 1em;
     margin: 1%;
+    cursor: pointer;
 }
 .challenge > span {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+}
+.challenge.completed {
+    background-color: var(--selected-button-col);
 }
 
 #challenge-description {
@@ -43,10 +47,12 @@ body {
     box-sizing: border-box;
     border-radius: 20px;
     vertical-align: middle;
-    margin: 1%;
+    margin: 0%;
     text-align: center;
     padding: 0;
 }
+
+/* I really don't feel like making a mobile ui rn */
 .difficulty_button {
     display: inline-block;
     vertical-align: middle;
@@ -54,8 +60,11 @@ body {
     color: white;
     font-family: "futura-bold";
     width: 24%;
+    margin-left: 0.1%;
+    margin-right: 0.1%;
     height: 1.4em;
     font-size: 1em;
+    box-sizing: border-box;
     border: none;
     border-radius: 15px;
 }
@@ -77,5 +86,10 @@ body {
 }
 #timer-desc {
     text-align: center;
-    font-size: 6vh;
+    font-size: 5vh;
+    margin: 0;
+}
+#completion-desc {
+    text-align: center;
+    font-size: 2vh;
 }

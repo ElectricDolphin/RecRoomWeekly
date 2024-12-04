@@ -1,4 +1,12 @@
+var currentlyOpenChallenge = 0;
 
+function saveChallengeData(obj) {
+    localStorage.setItem("RRChallData", JSON.stringify(obj));
+}
+function getChallengeData() {
+    return JSON.parse(localStorage.getItem("RRChallData"));
+}
+var challObj = getChallengeData() || {};
 
 var classicChallenges = [
     "Complete the Quest for the Golden Trophy quest.",
@@ -159,16 +167,55 @@ function pickChallenges(arr, amt) {
     return newArr;
 }
 
-function addChallenge(txt) {
+function addChallenge(txt, localStId) {
     var newEl = document.createElement("div");
     newEl.classList.add("challenge");
     newEl.innerHTML = "<span>" + txt + "</span>";
+    if (challObj[localStId]) {
+        newEl.classList.add("completed");
+    }
+    newEl.oncontextmenu = function(c) {
+        if (c.target.classList.contains("challenge")) {
+            c.target.classList.remove("completed");
+        } else {
+            c.target.parentElement.classList.remove("completed");
+        }
+        delete challObj[localStId];
+        saveChallengeData(challObj);
+        return false;
+    };
+    newEl.addEventListener("click", function(c) {
+        if (c.target.classList.contains("challenge")) {
+            c.target.classList.add("completed");
+        } else {
+            c.target.parentElement.classList.add("completed");
+        }
+        challObj[localStId] = true;
+        saveChallengeData(challObj);
+    })
     document.getElementById("challenge-container").appendChild(newEl);
 }
 
 function displayChallengeArray(arr) {
     for (var i = 0; i < arr.length; i ++) {
-        addChallenge(arr[i]);
+        var localStId = week;
+        switch(arr) {
+            case challengeList.classic:
+                localStId += "c";
+            break;
+            case challengeList.easy:
+                localStId += "e";
+            break;
+            case challengeList.medium:
+                localStId += "m";
+            break;
+            case challengeList.hard:
+                localStId += "h";
+            break;
+        }
+        localStId += i;
+
+        addChallenge(arr[i], localStId);
     }
 }
 
