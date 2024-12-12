@@ -50,7 +50,8 @@ var easyChallenges = [
     "Get a strike in Bowling.",
     "Complete a hole of Disc Golf under par.",
     "Score a goal in Soccer.",
-    "Win a game of Soccer."
+    "Win a game of Soccer.",
+    "Earn 2 gold medals in Run the Block."
 ];
 
 var mediumChallenges = [
@@ -78,7 +79,9 @@ var mediumChallenges = [
     "Get 3 strikes in Bowling.",
     "Complete a game of Disc Golf with a score of +2 or less.",
     "Win 5 games of Soccer.",
-    "Score 5 goals in Soccer."
+    "Score 5 goals in Soccer.",
+    "Win 2 public events in Run the Block.",
+    "Earn 5 gold medals in Run the Block."
 ];
 
 var hardChallenges = [
@@ -111,7 +114,9 @@ var hardChallenges = [
     "Complete Stunt Runner with an S rank.",
     "Get 10 strikes in Bowling.",
     "Get 3 strikes in a row in Bowling.",
-    "Score 15 goals in Soccer."
+    "Score 15 goals in Soccer.",
+    "Win 5 public events in Run the Block.",
+    "Earn 10 gold medals in Run the Block."
 ];
 
 var vrOnly = [easyChallenges[20], easyChallenges[21], mediumChallenges[18], mediumChallenges[19], hardChallenges[7], hardChallenges[25]]
@@ -119,6 +124,12 @@ var vrOnly = [easyChallenges[20], easyChallenges[21], mediumChallenges[18], medi
 var timeSinceFirst = Date.now() - 1732744800000;
 var week = Math.floor(timeSinceFirst/604800000);
 console.log(week);
+
+if (week < 3) {
+    easyChallenges.pop();
+    mediumChallenges.splice(-2);
+    hardChallenges.splice(-2);
+}
 
 // Pseudo-random generator
 function Marsaglia(i1, i2) {
